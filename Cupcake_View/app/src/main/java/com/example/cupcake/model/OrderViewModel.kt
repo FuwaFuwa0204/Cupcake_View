@@ -15,10 +15,6 @@ private const val PRICE_FOR_SAME_DAY_PICKUP = 3.00
 
 class OrderViewModel: ViewModel() {
 
-    init{
-        resetOrder()
-    }
-
     private val _quantity = MutableLiveData<Int>()
     val quantity: LiveData<Int> = _quantity
 
@@ -77,6 +73,11 @@ class OrderViewModel: ViewModel() {
         if(dateOptions[0] == _date.value){
             calculatorPrice += PRICE_FOR_SAME_DAY_PICKUP
         }
+        _price.value = calculatorPrice
+    }
+
+    init{
+        resetOrder()
     }
 
 }
